@@ -23,10 +23,19 @@
       <label for="emailId">Email Id</label>
       <p style="font-size: 15px">{{ user.emailId }}</p>
     </div>
-    <div class="col-md-8 mb-3" *ngIf="showBalance">
-      <p>Balance</p>
-      <app-balance></app-balance>
+    <div class="col-md-8 mb-3">
+      <p>Balance{{ balance }}</p>
     </div>
-    <div></div>
   </div>
 </form>
+<div lass="form-group">
+  <div class="col-md-8 mb-3">
+    <input type="text" class="form-control" [(ngModel)]="addressWallet" />
+  </div>
+  <div class="col-md-8 mb-3">
+    <input type="text" class="form-control" [(ngModel)]="passwordWallet" />
+  </div>
+  <button (click)="setCredential(addressWallet, passwordWallet)">
+    set credential
+  </button>
+</div>

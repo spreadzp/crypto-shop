@@ -1,10 +1,10 @@
 {
-  "name": "payidshop",
+  "name": "payidcrypto-shop",
   "version": "2.1.7",
   "private": true,
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve -o",
     "build": "ng build",
     "test": "ng test",
     "patch": "node patch.js",
@@ -15,11 +15,12 @@
     "build:stats": "ng build --stats-json",
     "analyze": "webpack-bundle-analyzer dist/stats-es2015.json",
     "ngrok": "ngrok http 4200 -host-header='localhost:4200'",
-    "dev:ssr": "ng run payidshop:serve-ssr",
-    "serve:ssr": "node dist/payidshop/server/main.js",
-    "build:ssr": "ng build --prod && ng run payidshop:server:production",
-    "prerender": "ng run payidshop:prerender",
-    "deploy-gp": "npx deploy-gh --base-href=/pay-id-shop/"
+    "dev:ssr": "ng run payidcrypto-shop:serve-ssr",
+    "serve:ssr": "node dist/payidcrypto-shop/server/main.js",
+    "build:ssr": "ng build --prod && ng run payidcrypto-shop:server:production",
+    "prerender": "ng run payidcrypto-shop:prerender",
+    "depl-gh": "ng build --prod --base-href https://spreadzp.github.io/crypto-shop/  && npx angular-cli-ghpages --dir=dist/crypto-shop",
+    "deploy-gp": "npx deploy-gh --base-href=/crypto-crypto-shop/"
   },
   "husky": {
     "hooks": {

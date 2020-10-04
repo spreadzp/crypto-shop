@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { ToastrService } from "./toastr.service";
+import { CredentialXrp } from "../models/credential.interface";
 const RippleAPI = require("ripple-lib").RippleAPI;
 
 @Injectable({
@@ -12,7 +14,10 @@ export class PayIdService {
   xrpClient = null;
   payIdClient = null;
   ownerAddress = "rJbWARGgCEwHcMn2vKqo4ho76AtzzPGC7X";
-  constructor(private httpClient: HttpClient) {
+  constructor(
+    private httpClient: HttpClient,
+    private toastrService: ToastrService
+  ) {
     this.api = new RippleAPI({
       server: "wss://s.altnet.rippletest.net:51233", // Public rippled server
     });
@@ -91,5 +96,17 @@ export class PayIdService {
     // as a result of this submission, which is the first one after the
     // validated ledger at time of submission.
     return latestLedgerVersion + 1;
+  }
+
+  setCredential(credential: CredentialXrp) {
+    console.log("credential :>> ", credential);
+    localStorage.setItem("credential", JSON.stringify(credential));
+    this.toastrService.wait("Adding Credential", "Adding Credential");
+  }
+
+  getCredential(): CredentialXrp {
+    const credential: CredentialXrp =
+      JSON.parse(localStorage.getItem("credential")) || ({} as Credential);
+    return credential;
   }
 }

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "shop": {
+    "crypto-shop": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/shop/browser",
+            "outputPath": "dist/crypto-shop",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -84,18 +84,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "shop:build"
+            "browserTarget": "crypto-shop:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "shop:build:production"
+              "browserTarget": "crypto-shop:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "shop:build"
+            "browserTarget": "crypto-shop:build"
           }
         },
         "test": {
@@ -129,18 +129,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "shop:serve"
+            "devServerTarget": "crypto-shop:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "shop:serve:production"
+              "devServerTarget": "crypto-shop:serve:production"
             }
           }
         },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/shop/server",
+            "outputPath": "dist/crypto-shop/server",
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json"
           },
@@ -161,21 +161,21 @@
         "serve-ssr": {
           "builder": "@nguniversal/builders:ssr-dev-server",
           "options": {
-            "browserTarget": "shop:build",
-            "serverTarget": "shop:server"
+            "browserTarget": "crypto-shop:build",
+            "serverTarget": "crypto-shop:server"
           },
           "configurations": {
             "production": {
-              "browserTarget": "shop:build:production",
-              "serverTarget": "shop:server:production"
+              "browserTarget": "crypto-shop:build:production",
+              "serverTarget": "crypto-shop:server:production"
             }
           }
         },
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
           "options": {
-            "browserTarget": "shop:build:production",
-            "serverTarget": "shop:server:production",
+            "browserTarget": "crypto-shop:build:production",
+            "serverTarget": "crypto-shop:server:production",
             "routes": ["/"]
           },
           "configurations": {
@@ -193,7 +193,7 @@
       }
     }
   },
-  "defaultProject": "shop",
+  "defaultProject": "crypto-shop",
   "cli": {
     "analytics": "e072d427-0417-4063-9494-90906a567042"
   }

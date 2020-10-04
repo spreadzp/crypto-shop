@@ -1,6 +1,9 @@
 import { Component, OnInit, AfterViewInit } from "@angular/core";
+import { NgModel } from "@angular/forms";
+import { CredentialXrp } from "src/app/shared/models/credential.interface";
 import { User } from "src/app/shared/models/user";
 import { AuthService } from "src/app/shared/services/auth.service";
+import { PayIdService } from "src/app/shared/services/pay-id.service";
 
 @Component({
   selector: "app-user-account",
@@ -10,9 +13,34 @@ import { AuthService } from "src/app/shared/services/auth.service";
 export class UserAccountComponent implements OnInit {
   // Enable Update Button
   showBalance = false;
-  constructor(public authService: AuthService) {}
+  balance = null;
+  credential: CredentialXrp;
+  addressWallet = "";
+  passwordWallet = "";
+  constructor(
+    public authService: AuthService,
+    private payIdService: PayIdService
+  ) {}
 
   ngOnInit(): void {
-    this.showBalance = true;
+    this.payIdService
+      .getBalance()
+      .then((balance) => (this.balance = balance.xrpBalance));
+    this.credential = this.payIdService.getCredential();
+    this.addressWallet = this.credential.address ?? "";
+    this.passwordWallet = this.credential.key ?? "";
+  }
+
+  setCredential(addressXrp: string, keyXrp: string) {
+    const userXrpData = {
+      address: addressXrp,
+      key: keyXrp,
+    };
+    console.log(
+      "UserAccountComponent -> setCredential -> userXrpData",
+      userXrpData
+    );
+
+    this.payIdService.setCredential(userXrpData);
   }
 }
