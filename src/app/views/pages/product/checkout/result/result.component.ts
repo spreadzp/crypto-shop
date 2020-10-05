@@ -5,6 +5,7 @@ import * as jspdf from "jspdf";
 import html2canvas from "html2canvas";
 import { PayIdService } from "src/app/shared/services/pay-id.service";
 import { ToastrService } from "src/app/shared/services/toastr.service";
+import { Router } from "@angular/router";
 declare var $: any;
 @Component({
   selector: "app-result",
@@ -20,7 +21,8 @@ export class ResultComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private payIdService: PayIdService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private router: Router
   ) {
     /* Hiding Billing Tab Element */
     document.getElementById("productsTab").style.display = "none";
@@ -59,15 +61,16 @@ export class ResultComponent implements OnInit {
   }
 
   payment(totalSum: number) {
+    const credentialUser = this.payIdService.getCredential();
     this.payIdService
-      .doPayment(
-        totalSum,
-        "rnPtkxF79LwCgCgxhZADA8qQS1GhetYy2R",
-        "snRq1KMdS75DUZaTDf4SykuJDyoX9"
-      )
+      .doPayment(totalSum, credentialUser.address, credentialUser.key)
       .then((result) => {
         this.productService.clearBacket();
         this.toastrService.success("Success payment", JSON.stringify(result));
+        this.router.navigate(["users"]);
+      })
+      .catch((err) => {
+        console.log("ResultComponent -> payment -> err", err);
       });
   }
 }

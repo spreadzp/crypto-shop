@@ -23,10 +23,17 @@ export class PayIdService {
     });
   }
 
-  getBalance() {
+  getBalance(address: string) {
     return this.api.connect().then(() => {
       // console.log("getting account info for", this.ownerAddress);
-      return this.api.getAccountInfo(this.ownerAddress);
+      return this.api.getAccountInfo(address);
+    });
+  }
+
+  getPaymentHistory(address: string) {
+    return this.api.connect().then(() => {
+      // console.log("getting account info for", this.ownerAddress);
+      return this.api.getPaymentHistory(address);
     });
   }
 

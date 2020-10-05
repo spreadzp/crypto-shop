@@ -12,8 +12,8 @@ export class BalanceComponent implements OnInit {
   //
   constructor(private payIdService: PayIdService) {}
   ngOnInit(): void {
-    this.payIdService
-      .getBalance()
-      .then((bal) => (this.balance = bal.xrpBalance));
+    // this.payIdService
+    //   .getBalance()
+    //   .then((bal) => (this.balance = bal.xrpBalance));
   }
 }

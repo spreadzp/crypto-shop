@@ -13,15 +13,15 @@ export class BillingService {
   billings: AngularFireList<Billing>;
   billing: AngularFireObject<Billing>;
   constructor(private db: AngularFireDatabase) {
-    this.getBillings();
+    this.getBillings("billings");
   }
 
   createBillings(data: Billing) {
     this.billings.push(data);
   }
 
-  getBillings() {
-    this.billings = this.db.list("billings");
+  getBillings(dbName: string) {
+    this.billings = this.db.list(dbName);
     return this.billings;
   }
 

@@ -23,12 +23,12 @@ export class UserAccountComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.payIdService
-      .getBalance()
-      .then((balance) => (this.balance = balance.xrpBalance));
     this.credential = this.payIdService.getCredential();
     this.addressWallet = this.credential.address ?? "";
     this.passwordWallet = this.credential.key ?? "";
+    this.payIdService
+      .getBalance(this.addressWallet)
+      .then((balance) => (this.balance = balance.xrpBalance));
   }
 
   setCredential(addressXrp: string, keyXrp: string) {

@@ -19,7 +19,7 @@ export class BillingDetailsComponent implements OnInit {
   userDetail: UserDetail;
 
   constructor(
-    authService: AuthService,
+    private authService: AuthService,
     private billingService: BillingService,
     productService: ProductService,
     private router: Router
@@ -32,19 +32,19 @@ export class BillingDetailsComponent implements OnInit {
 
     this.userDetail = new UserDetail();
     this.products = productService.getLocalCartProducts();
-    authService.user$.pipe(
-      map((user) => {
-        this.userDetails = user;
-      })
-    );
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.authService.user$.subscribe((user) => {
+      console.log("user :>> ", user);
+      this.userDetails = user;
+    });
+  }
 
   updateUserDetails(form: NgForm) {
     const data = form.value;
 
-    // data["emailId"] = this.userDetails.emailId;
+    data["emailId"] = this.userDetails.emailId;
     // data["userId"] = this.userDetails.$key;
     let totalPrice = 0;
     const products = [];
