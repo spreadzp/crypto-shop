@@ -44,3 +44,4 @@ firebase.json
 .travis.yml
 /src/environments/firebase.config.ts
 tasks
+package-lock.json

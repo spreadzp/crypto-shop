@@ -6,6 +6,7 @@ import { User, UserDetail } from "../../../../../shared/models/user";
 import { AuthService } from "../../../../../shared/services/auth.service";
 import { Router } from "@angular/router";
 import { NgForm } from "@angular/forms";
+import * as countryList from "country-list";
 import { map } from "rxjs/operators";
 
 @Component({
@@ -17,6 +18,7 @@ export class BillingDetailsComponent implements OnInit {
   userDetails: User;
   products: Product[];
   userDetail: UserDetail;
+  countries: string[];
 
   constructor(
     private authService: AuthService,
@@ -39,6 +41,7 @@ export class BillingDetailsComponent implements OnInit {
       console.log("user :>> ", user);
       this.userDetails = user;
     });
+    this.countries = countryList.getNames();
   }
 
   updateUserDetails(form: NgForm) {

@@ -90,8 +90,8 @@
             [(ngModel)]="userDetail.country"
             name="country"
           >
-            <option value="">Choose...</option>
-            <option>United States</option>
+            <!-- <option value="">Choose...</option> -->
+            <option *ngFor="let country of countries">{{ country }}</option>
           </select>
           <div class="invalid-feedback">Please select a valid country.</div>
         </div>

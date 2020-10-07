@@ -62,15 +62,23 @@ export class ResultComponent implements OnInit {
 
   payment(totalSum: number) {
     const credentialUser = this.payIdService.getCredential();
-    this.payIdService
-      .doPayment(totalSum, credentialUser.address, credentialUser.key)
-      .then((result) => {
-        this.productService.clearBacket();
-        this.toastrService.success("Success payment", JSON.stringify(result));
-        this.router.navigate(["users"]);
-      })
-      .catch((err) => {
-        console.log("ResultComponent -> payment -> err", err);
-      });
+    if (!credentialUser.address || !credentialUser.key) {
+      this.toastrService.success(
+        "Fail payment",
+        "You need to add your credential for success payment"
+      );
+      this.router.navigate(["users"]);
+    } else {
+      this.payIdService
+        .doPayment(totalSum, credentialUser.address, credentialUser.key)
+        .then((result) => {
+          this.productService.clearBacket();
+          this.toastrService.success("Success payment", JSON.stringify(result));
+          this.router.navigate(["users"]);
+        })
+        .catch((err) => {
+          console.log("ResultComponent -> payment -> err", err);
+        });
+    }
   }
 }
