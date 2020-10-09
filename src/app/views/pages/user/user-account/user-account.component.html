@@ -15,10 +15,10 @@
       />
     </ng-template>
 
-    <div class="col-md-8 mt-3">
+    <!-- <div class="col-md-8 mt-3">
       <label for="userName">User Name</label>
       <p style="font-size: 15px">{{ user.userName }}</p>
-    </div>
+    </div> -->
     <div class="col-md-8 mb-3">
       <label for="emailId">Email Id</label>
       <p style="font-size: 15px">{{ user.emailId }}</p>
@@ -30,9 +30,11 @@
 </form>
 <div lass="form-group">
   <div class="col-md-8 mb-3">
+    <label for="addressWallet">Address XRP</label>
     <input type="text" class="form-control" [(ngModel)]="addressWallet" />
   </div>
   <div class="col-md-8 mb-3">
+    <label for="passwordWallet">Wallet key</label>
     <input type="text" class="form-control" [(ngModel)]="passwordWallet" />
   </div>
   <button (click)="setCredential(addressWallet, passwordWallet)">

@@ -7,6 +7,7 @@ import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ProductService } from "../../../../../shared/services/product.service";
 import { map } from "rxjs/operators";
+import * as countryList from "country-list";
 @Component({
   selector: "app-shipping-details",
   templateUrl: "./shipping-details.component.html",
@@ -14,13 +15,12 @@ import { map } from "rxjs/operators";
 })
 export class ShippingDetailsComponent implements OnInit {
   userDetails: User;
-
   userDetail: UserDetail;
-
+  countries: string[];
   products: Product[];
 
   constructor(
-    authService: AuthService,
+    private authService: AuthService,
     private shippingService: ShippingService,
     productService: ProductService,
     private router: Router
@@ -33,15 +33,17 @@ export class ShippingDetailsComponent implements OnInit {
 
     this.userDetail = new UserDetail();
     this.products = productService.getLocalCartProducts();
-    authService.user$.pipe(
+  }
+
+  ngOnInit() {
+    this.authService.user$.pipe(
       map((user) => {
         this.userDetails = user;
         console.log("@@@@@@@@@@this.userDetails :>> ", this.userDetails);
       })
     );
+    this.countries = countryList.getNames();
   }
-
-  ngOnInit() {}
 
   updateUserDetails(form: NgForm) {
     const data = form.value;
@@ -68,7 +70,7 @@ export class ShippingDetailsComponent implements OnInit {
 
     this.router.navigate([
       "checkouts",
-      { outlets: { checkOutlet: ["billing-details"] } },
+      { outlets: { checkOutlet: ["result"] } },
     ]);
   }
 }

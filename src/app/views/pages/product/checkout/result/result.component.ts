@@ -16,7 +16,7 @@ export class ResultComponent implements OnInit {
   products: Product[];
   date: number;
   totalPrice = 0;
-  tax = 6.4;
+  tax = 2;
 
   constructor(
     private productService: ProductService,
@@ -40,6 +40,10 @@ export class ResultComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  getSellerAddress() {
+    return this.payIdService.getSellerAddress();
+  }
 
   downloadReceipt() {
     const data = document.getElementById("receipt");
@@ -72,10 +76,12 @@ export class ResultComponent implements OnInit {
       this.payIdService
         .doPayment(totalSum, credentialUser.address, credentialUser.key)
         .then((result) => {
-          this.productService.clearBacket();
           this.toastrService.success("Success payment", JSON.stringify(result));
-          this.router.navigate(["users"]);
         })
+        .then((res) => {
+          this.productService.clearBacket();
+        })
+        .then(() => this.router.navigate(["users/order"]))
         .catch((err) => {
           console.log("ResultComponent -> payment -> err", err);
         });

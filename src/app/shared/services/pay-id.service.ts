@@ -23,6 +23,10 @@ export class PayIdService {
     });
   }
 
+  getSellerAddress() {
+    return this.ownerAddress;
+  }
+
   getBalance(address: string) {
     return this.api.connect().then(() => {
       // console.log("getting account info for", this.ownerAddress);
@@ -64,8 +68,8 @@ export class PayIdService {
       {
         TransactionType: "Payment",
         Account: sender,
-        Amount: await this.api.xrpToDrops(sum.toString()),
-        Destination: this.ownerAddress,
+        Amount: await this.api.xrpToDrops(sum),
+        Destination: this.getSellerAddress(),
       },
       {
         // Expire this transaction if it doesn"t execute within ~5 minutes:
@@ -92,12 +96,14 @@ export class PayIdService {
 
   // use txBlob from the previous example
   async doSubmit(txBlob) {
+    console.log("PayIdService -> doSubmit -> txBlob", txBlob);
     const latestLedgerVersion = await this.api.getLedgerVersion();
 
     const result = this.api.submit(txBlob);
+    console.log("PayIdService -> doSubmit -> result", result);
 
-    console.log("Tentative result code:", result.resultCode);
-    console.log("Tentative result message:", result.resultMessage);
+    // console.log("Tentative result code:", result.resultCode);
+    // console.log("Tentative result message:", result.resultMessage);
 
     // Return the earliest ledger index this transaction could appear in
     // as a result of this submission, which is the first one after the
@@ -106,7 +112,7 @@ export class PayIdService {
   }
 
   setCredential(credential: CredentialXrp) {
-    console.log("credential :>> ", credential);
+    // console.log("credential :>> ", credential);
     localStorage.setItem("credential", JSON.stringify(credential));
     this.toastrService.wait("Adding Credential", "Adding Credential");
   }
