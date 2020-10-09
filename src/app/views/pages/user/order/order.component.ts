@@ -11,7 +11,7 @@ import { ShippingService } from "src/app/shared/services/shipping.service";
 })
 export class OrderComponent implements OnInit {
   elements: any = [];
-
+  head = "Shipment board";
   headElements = [
     "address1",
     "address2",
