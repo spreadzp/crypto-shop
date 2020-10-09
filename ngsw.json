@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1602101368736,
+  "timestamp": 1602263458596,
   "index": "https://spreadzp.github.io/crypto-shop/index.html",
   "assetGroups": [
     {
@@ -14,8 +14,8 @@
         "https://spreadzp.github.io/crypto-shop/6-es5.b2b23497f9b147ef73c3.js",
         "https://spreadzp.github.io/crypto-shop/favicon.png",
         "https://spreadzp.github.io/crypto-shop/index.html",
-        "https://spreadzp.github.io/crypto-shop/main-es2015.ee21906efa58d378a8a8.js",
-        "https://spreadzp.github.io/crypto-shop/main-es5.ee21906efa58d378a8a8.js",
+        "https://spreadzp.github.io/crypto-shop/main-es2015.9182c285063cc7c0f502.js",
+        "https://spreadzp.github.io/crypto-shop/main-es5.9182c285063cc7c0f502.js",
         "https://spreadzp.github.io/crypto-shop/manifest.webmanifest",
         "https://spreadzp.github.io/crypto-shop/polyfills-es2015.bffeb5f556091b1e7376.js",
         "https://spreadzp.github.io/crypto-shop/polyfills-es5.ad667ab57370da5194de.js",
@@ -131,9 +131,9 @@
     "https://spreadzp.github.io/crypto-shop/fontawesome-webfont.8b43027f47b20503057d.eot": "d980c2ce873dc43af460d4d572d441304499f400",
     "https://spreadzp.github.io/crypto-shop/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg": "98a8aa5cf7d62c2eff5f07ede8d844b874ef06ed",
     "https://spreadzp.github.io/crypto-shop/fontawesome-webfont.f691f37e57f04c152e23.woff": "28b782240b3e76db824e12c02754a9731a167527",
-    "https://spreadzp.github.io/crypto-shop/index.html": "182a29f468cfe65fb1643b5cc294b595584e1f94",
-    "https://spreadzp.github.io/crypto-shop/main-es2015.ee21906efa58d378a8a8.js": "cc80676444455bf2134265b44f87884da4659efe",
-    "https://spreadzp.github.io/crypto-shop/main-es5.ee21906efa58d378a8a8.js": "38a36eb2e8c2567ccefe4662caf2ae0277a22d1a",
+    "https://spreadzp.github.io/crypto-shop/index.html": "fd0c7a843f4048288182713646a78b63edf28b0a",
+    "https://spreadzp.github.io/crypto-shop/main-es2015.9182c285063cc7c0f502.js": "782e055e845359517d9d16c4f1186813b2e0b116",
+    "https://spreadzp.github.io/crypto-shop/main-es5.9182c285063cc7c0f502.js": "05a5c0aab64c5c7ae180ce4eb7659e7aea786f35",
     "https://spreadzp.github.io/crypto-shop/manifest.webmanifest": "0fff4a497a67337c2293d14e202a2dc639bfb27e",
     "https://spreadzp.github.io/crypto-shop/owl.video.play.7f01b07148f205f6e825.png": "c0d64356ec2758cb280d183b4829c923e5ff61e5",
     "https://spreadzp.github.io/crypto-shop/polyfills-es2015.bffeb5f556091b1e7376.js": "eebf48ce943e980ddda8d04930b79d09f9f1cf10",
